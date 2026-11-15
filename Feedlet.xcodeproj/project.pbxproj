@@ -32,6 +32,7 @@
 				FeedCommands.swift,
 				Inspection.swift,
 				Platform.swift,
+				ScreenshotMode.swift,
 				Views/AddFeedSheet.swift,
 				Views/ArticleDetailView.swift,
 				Views/ArticleListView.swift,

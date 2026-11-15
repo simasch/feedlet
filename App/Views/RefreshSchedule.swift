@@ -9,18 +9,27 @@ struct RefreshSchedule: ViewModifier {
     @Environment(\.scenePhase) private var scenePhase
     #endif
 
+    /// App Store screenshots (Debug only) show the sample library unchanged, see App/ScreenshotMode.swift.
+    private var refreshEnabled: Bool {
+        #if DEBUG
+        !ScreenshotMode.isActive
+        #else
+        true
+        #endif
+    }
+
     func body(content: Content) -> some View {
         #if os(macOS)
         content
             // UC-003 BR-001: refresh at start, then every 30 minutes while the app runs.
-            .onAppear { store.resumeScheduledRefresh() }
+            .onAppear { if refreshEnabled { store.resumeScheduledRefresh() } }
         #else
         content
             .onChange(of: scenePhase, initial: true) { _, phase in
                 switch phase {
                 case .active:
                     // UC-003 BR-001: a refresh that fell due in the background follows right away.
-                    store.resumeScheduledRefresh()
+                    if refreshEnabled { store.resumeScheduledRefresh() }
                 case .background:
                     // UC-003 BR-001: no refresh runs in the background on iPhone and iPad.
                     store.pauseScheduledRefresh()

@@ -54,7 +54,32 @@ struct ContentView: View {
             AddFeedSheet()
         }
         .onReceive(inspection.notice) { inspection.visit(self, $0) }
+        #if DEBUG
+        .onAppear(perform: showScreenshotScene)
+        #endif
     }
+
+    #if DEBUG
+    /// Opens the screen `-screenshot <scene>` asks for (App Store screenshots, see App/ScreenshotMode.swift).
+    private func showScreenshotScene() {
+        switch ScreenshotMode.scene {
+        case .sidebar: sidebarSelection = nil
+        case .list: sidebarSelection = .unread
+        case .starred:
+            sidebarSelection = .starred
+            #if os(macOS)
+            // The Mac shows all three columns: fill the reader too. On iPhone this would push the article screen.
+            // Deferred: the sidebar's onChange clears the selection after this change.
+            DispatchQueue.main.async { selectedArticleID = store.articles(in: .starred).first?.id }
+            #endif
+        case .article:
+            sidebarSelection = .unread
+            selectedArticleID = store.articles(in: .unread).first?.id
+        case .addFeed: store.isAddingFeed = true
+        case nil: break
+        }
+    }
+    #endif
 
     /// The article `offset` places before or after the given one in the displayed list, if any.
     // UC-005 BR-006: also for a displayed article that has left the list.
