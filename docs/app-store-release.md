@@ -11,7 +11,7 @@ Anleitung, um Feedlet (iOS + macOS, Multiplatform-Target) im App Store zu veröf
 
 | Was | Status |
 |---|---|
-| Team | **Offen**: braucht die Mitgliedschaft. Im Target unter *Signing & Capabilities* das Team wählen oder `DEVELOPMENT_TEAM` an `Scripts/release.sh` übergeben. |
+| Team | Erledigt: W6QA33J4VC (Martinelli GmbH) |
 | Bundle ID | Erledigt: `ch.martinelli.feedlet` (Tests: `ch.martinelli.feedlet.tests`). Nach dem ersten Upload nicht mehr änderbar. |
 | Version | Erledigt: `1.0`. Die Build-Nummer setzt `Scripts/release.sh` aus der Anzahl der Git-Commits. |
 | Privacy Manifest | Erledigt: `App/PrivacyInfo.xcprivacy` (kein Tracking, keine Daten, keine Required-Reason-APIs). Anpassen, falls z. B. `UserDefaults` oder Dateizeitstempel dazukommen. |
@@ -48,11 +48,11 @@ In Xcode für jede Plattform einmal:
 Alternativ über die Kommandozeile mit beiden Plattformen in einem Lauf:
 
 ```sh
-DEVELOPMENT_TEAM=ABCDE12345 Scripts/release.sh            # Archive + Export nach build/release/
-DEVELOPMENT_TEAM=ABCDE12345 Scripts/release.sh --upload   # Archive + Upload zu App Store Connect
+Scripts/release.sh            # Archive + Export nach build/release/
+Scripts/release.sh --upload   # Archive + Upload zu App Store Connect
 ```
 
-Die Team-ID steht auf developer.apple.com unter *Membership*. Die Export-Einstellungen liegen in `Scripts/ExportOptions.plist`.
+Team-ID W6QA33J4VC (Martinelli GmbH) ist im Projekt gesetzt. Die Export-Einstellungen liegen in `Scripts/ExportOptions.plist`.
 
 ## 5. Testen und einreichen
 

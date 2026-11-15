@@ -28,7 +28,7 @@ From the terminal:
 
 ```sh
 Scripts/build-app.sh                       # build "build/Feedlet.app" (macOS, Release)
-DEVELOPMENT_TEAM=<team id> Scripts/release.sh [--upload]   # App Store archives, see docs/app-store-release.md
+Scripts/release.sh [--upload]              # App Store archives, see docs/app-store-release.md
 open "build/Feedlet.app"
 
 xcodebuild -project Feedlet.xcodeproj -scheme Feedlet \
@@ -37,9 +37,8 @@ xcodebuild -project Feedlet.xcodeproj -scheme Feedlet \
 cd FeedletKit && swift test              # core tests, no Xcode project needed
 ```
 
-To run on a physical iPhone or to distribute, choose your team under *Signing & Capabilities* and
-change the bundle identifier (`ch.martinelli.feedlet`) to one you own if you build your own copy. Without a team, the Mac app is
-signed to run locally.
+The project is signed with the Martinelli GmbH team (`W6QA33J4VC`). To build your own copy, choose your
+team under *Signing & Capabilities* and change the bundle identifier (`ch.martinelli.feedlet`) to one you own.
 
 The Mac app is sandboxed (outgoing network connections and user-selected files only).
 

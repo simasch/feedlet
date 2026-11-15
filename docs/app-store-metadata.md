@@ -19,9 +19,11 @@ Offene Punkte sind mit **TODO** markiert.
 | App-Name (max. 30 Zeichen) | `Feedlet – RSS Reader` (unter dem Icon: „Feedlet“) |
 | Kontakt | simon@martinelli.ch |
 | Anbieter (EU-Trader-Status) | Martinelli GmbH, Tulpenweg 1, 2575 Täuffelen, Switzerland, simon@martinelli.ch, +41 32 544 88 88 |
+| D-U-N-S-Nummer | 485054147 (Martinelli GmbH, für die Anmeldung im Apple Developer Program) |
 | Support-URL | `https://martinelli.ch/feedlet/support` |
 | Datenschutz-URL | `https://martinelli.ch/feedlet/privacy` (Text: [privacy-policy.md](privacy-policy.md)) |
 | Marketing-URL (optional) | `https://martinelli.ch/feedlet` |
+| URLs Deutsch | Support `https://martinelli.ch/de/feedlet-app/support/`, Datenschutz `https://martinelli.ch/de/feedlet-app/datenschutz/`, Marketing `https://martinelli.ch/de/feedlet-app/` (in App Store Connect bei der deutschen Lokalisierung eintragen) |
 
 ## App Privacy (Datenschutzangaben)
 

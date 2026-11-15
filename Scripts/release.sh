@@ -1,15 +1,17 @@
 #!/bin/bash
 # Archives Feedlet for iOS and macOS and exports App Store packages into build/release/.
 #
-#   DEVELOPMENT_TEAM=ABCDE12345 Scripts/release.sh            # archive + export (.ipa / .pkg)
-#   DEVELOPMENT_TEAM=ABCDE12345 Scripts/release.sh --upload   # archive + upload to App Store Connect
+#   Scripts/release.sh            # archive + export (.ipa / .pkg)
+#   Scripts/release.sh --upload   # archive + upload to App Store Connect
+#
+# Uses the team W6QA33J4VC (Martinelli GmbH); override with DEVELOPMENT_TEAM=... if needed.
 #
 # Requires an Apple Developer Program membership and the account added in Xcode → Settings → Accounts.
 # The build number defaults to the git commit count, so every upload from a new commit is higher.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-: "${DEVELOPMENT_TEAM:?Set DEVELOPMENT_TEAM to your Apple team ID (developer.apple.com → Membership)}"
+DEVELOPMENT_TEAM="${DEVELOPMENT_TEAM:-W6QA33J4VC}"
 BUILD_NUMBER="${BUILD_NUMBER:-$(git rev-list --count HEAD)}"
 OUT=build/release
 
