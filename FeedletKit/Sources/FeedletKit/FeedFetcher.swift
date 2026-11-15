@@ -7,9 +7,9 @@ enum FetchResult: Sendable {
 
 enum FeedFetcher {
     #if os(macOS)
-    static let userAgent = "RSSReader/0.1 (Macintosh; macOS)"
+    static let userAgent = "Feedlet/1.0 (Macintosh; macOS)"
     #else
-    static let userAgent = "RSSReader/0.1 (iPhone; iOS)"
+    static let userAgent = "Feedlet/1.0 (iPhone; iOS)"
     #endif
 
     /// Fetches a feed using conditional GET so unchanged feeds cost a 304 instead of a full download.

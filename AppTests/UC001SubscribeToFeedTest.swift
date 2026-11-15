@@ -4,7 +4,7 @@ import AppKit
 import UIKit
 #endif
 import Foundation
-import RSSReaderKit
+import FeedletKit
 import SwiftUI
 import Testing
 import ViewInspector
@@ -83,7 +83,7 @@ struct UC001SubscribeToFeedTest {
             store.isAddingFeed = true
             let texts = try await window.waitForSheet()
             // The sheet shows the add-feed form; what the form shows is checked by the tests that inspect it.
-            #expect(texts.contains { $0.contains("RSSReaderTests.AddFeedSheet") })
+            #expect(texts.contains { $0.contains("FeedletTests.AddFeedSheet") })
 
             store.isAddingFeed = false
             try await window.waitForNoSheet()

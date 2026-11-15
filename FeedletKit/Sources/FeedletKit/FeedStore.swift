@@ -28,7 +28,7 @@ public final class FeedStore {
 
     public nonisolated static var defaultFileURL: URL {
         URL.applicationSupportDirectory
-            .appending(path: "RSSReader", directoryHint: .isDirectory)
+            .appending(path: "Feedlet", directoryHint: .isDirectory)
             .appending(path: "library.json")
     }
 

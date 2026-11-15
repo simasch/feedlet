@@ -1,4 +1,4 @@
-import RSSReaderKit
+import FeedletKit
 import SwiftUI
 
 /// Runs the Scheduler's refresh for the window it is attached to: from the start on the Mac, and on iPhone and iPad

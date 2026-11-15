@@ -1,6 +1,6 @@
 import Foundation
 import Testing
-@testable import RSSReaderKit
+@testable import FeedletKit
 
 private let base = URL(string: "https://example.com/feed.xml")!
 

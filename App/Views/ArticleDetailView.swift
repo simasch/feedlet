@@ -1,4 +1,4 @@
-import RSSReaderKit
+import FeedletKit
 import SwiftUI
 import WebKit
 

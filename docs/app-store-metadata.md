@@ -7,8 +7,8 @@ Offene Punkte sind mit **TODO** markiert.
 
 | Feld | Wert |
 |---|---|
-| Bundle ID | `ch.martinelli.rssreader` |
-| SKU | `rssreader` |
+| Bundle ID | `ch.martinelli.feedlet` |
+| SKU | `feedlet` |
 | Plattformen | iOS (iPhone, iPad) und macOS, Universal Purchase |
 | Version | 1.0 |
 | Preis | Gratis, keine In-App-Käufe |
@@ -19,9 +19,9 @@ Offene Punkte sind mit **TODO** markiert.
 | App-Name (max. 30 Zeichen) | `Feedlet – RSS Reader` (unter dem Icon: „Feedlet“) |
 | Kontakt | simon@martinelli.ch |
 | Anbieter (EU-Trader-Status) | Martinelli GmbH, Tulpenweg 1, 2575 Täuffelen, Switzerland, simon@martinelli.ch, +41 32 544 88 88 |
-| Support-URL | `https://martinelli.ch/rssreader/support` |
-| Datenschutz-URL | `https://martinelli.ch/rssreader/privacy` (Text: [privacy-policy.md](privacy-policy.md)) |
-| Marketing-URL (optional) | `https://martinelli.ch/rssreader` |
+| Support-URL | `https://martinelli.ch/feedlet/support` |
+| Datenschutz-URL | `https://martinelli.ch/feedlet/privacy` (Text: [privacy-policy.md](privacy-policy.md)) |
+| Marketing-URL (optional) | `https://martinelli.ch/feedlet` |
 
 ## App Privacy (Datenschutzangaben)
 

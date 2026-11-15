@@ -12,7 +12,7 @@ Anleitung, um Feedlet (iOS + macOS, Multiplatform-Target) im App Store zu veröf
 | Was | Status |
 |---|---|
 | Team | **Offen**: braucht die Mitgliedschaft. Im Target unter *Signing & Capabilities* das Team wählen oder `DEVELOPMENT_TEAM` an `Scripts/release.sh` übergeben. |
-| Bundle ID | Erledigt: `ch.martinelli.rssreader` (Tests: `ch.martinelli.rssreader.tests`). Nach dem ersten Upload nicht mehr änderbar. |
+| Bundle ID | Erledigt: `ch.martinelli.feedlet` (Tests: `ch.martinelli.feedlet.tests`). Nach dem ersten Upload nicht mehr änderbar. |
 | Version | Erledigt: `1.0`. Die Build-Nummer setzt `Scripts/release.sh` aus der Anzahl der Git-Commits. |
 | Privacy Manifest | Erledigt: `App/PrivacyInfo.xcprivacy` (kein Tracking, keine Daten, keine Required-Reason-APIs). Anpassen, falls z. B. `UserDefaults` oder Dateizeitstempel dazukommen. |
 | Export Compliance | Erledigt: `INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO` |

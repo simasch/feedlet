@@ -14,14 +14,14 @@ A small native RSS/Atom reader for macOS, iPhone and iPad, written in Swift and 
 - Articles render with JavaScript disabled; links open in your default browser
 - iOS: pull to refresh, swipe right to toggle read, swipe left to star, long-press for more, share sheet
 - Library stored as JSON in the app's sandbox container, under
-  `Library/Application Support/RSSReader/library.json`
-  (on macOS: `~/Library/Containers/ch.martinelli.rssreader/Data/Library/Application Support/RSSReader/`)
+  `Library/Application Support/Feedlet/library.json`
+  (on macOS: `~/Library/Containers/ch.martinelli.feedlet/Data/Library/Application Support/Feedlet/`)
 
 ## Build and run
 
 Requires Xcode (Swift 6). The app runs on macOS 14+ and iOS/iPadOS 17+.
 
-Open `RSSReader.xcodeproj`, pick *My Mac*, a simulator or a device as the destination, and press ⌘R.
+Open `Feedlet.xcodeproj`, pick *My Mac*, a simulator or a device as the destination, and press ⌘R.
 ⌘U runs the tests. One multiplatform target builds both the Mac and the iOS app.
 
 From the terminal:
@@ -31,19 +31,17 @@ Scripts/build-app.sh                       # build "build/Feedlet.app" (macOS, R
 DEVELOPMENT_TEAM=<team id> Scripts/release.sh [--upload]   # App Store archives, see docs/app-store-release.md
 open "build/Feedlet.app"
 
-xcodebuild -project RSSReader.xcodeproj -scheme RSSReader \
+xcodebuild -project Feedlet.xcodeproj -scheme Feedlet \
   -destination 'generic/platform=iOS Simulator' build    # iOS build
 
-cd RSSReaderKit && swift test              # core tests, no Xcode project needed
+cd FeedletKit && swift test              # core tests, no Xcode project needed
 ```
 
 To run on a physical iPhone or to distribute, choose your team under *Signing & Capabilities* and
-change the bundle identifier (`ch.martinelli.rssreader`) to one you own if you build your own copy. Without a team, the Mac app is
+change the bundle identifier (`ch.martinelli.feedlet`) to one you own if you build your own copy. Without a team, the Mac app is
 signed to run locally.
 
-The Mac app is sandboxed (outgoing network connections and user-selected files only). On its first
-launch, `App/container-migration.plist` moves a library left by earlier, unsandboxed builds from
-`~/Library/Application Support/RSSReader` into the container.
+The Mac app is sandboxed (outgoing network connections and user-selected files only).
 
 The app icons in `App/Assets.xcassets` (rounded macOS sizes and a full-bleed iOS icon) are generated
 from the square artwork in `Design/AppIcon.png`; run `swift Scripts/make-icon.swift` after replacing it.
@@ -63,23 +61,22 @@ from the square artwork in `Design/AppIcon.png`; run `swift Scripts/make-icon.sw
 ## Layout
 
 ```
-RSSReader.xcodeproj        Multiplatform app target (macOS, iOS, iPadOS), shared scheme
+Feedlet.xcodeproj        Multiplatform app target (macOS, iOS, iPadOS), shared scheme
 App/                       App target sources: SwiftUI, with #if os(...) for platform differences
-  RSSReaderApp.swift       App entry, macOS menu commands, auto-refresh, iOS save-on-background
+  FeedletApp.swift       App entry, macOS menu commands, auto-refresh, iOS save-on-background
   Platform.swift           Pasteboard and OPML type helpers
   Views/                   Sidebar, article list, article view, add-feed sheet
   Assets.xcassets          App icons
   Info.plist               App Transport Security exception for plain-HTTP feeds
-  container-migration.plist  macOS: moves the pre-sandbox library into the container
-RSSReaderKit/              Local Swift package with the platform-independent core
-  Sources/RSSReaderKit/
+FeedletKit/              Local Swift package with the platform-independent core
+  Sources/FeedletKit/
     Models.swift           Feed, Article, SidebarItem, FeedError
     FeedParser.swift       XMLParser-based RSS/Atom parser, date parsing
     FeedFetcher.swift      HTTP fetching, conditional GET, feed discovery
     FeedStore.swift        Observable state, merging, persistence
     OPML.swift             OPML import/export
     HTMLText.swift         Tag stripping and escaping helpers
-  Tests/RSSReaderKitTests/
+  Tests/FeedletKitTests/
 Scripts/
   build-app.sh             Release build of the Mac app
   make-icon.swift          Generates the app icons from Design/AppIcon.png

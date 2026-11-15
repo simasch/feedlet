@@ -1,4 +1,4 @@
-import RSSReaderKit
+import FeedletKit
 import SwiftUI
 
 struct ContentView: View {

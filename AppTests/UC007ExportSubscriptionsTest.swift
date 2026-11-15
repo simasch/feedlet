@@ -1,5 +1,5 @@
 import Foundation
-import RSSReaderKit
+import FeedletKit
 import SwiftUI
 import Testing
 import UniformTypeIdentifiers

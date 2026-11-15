@@ -1,5 +1,5 @@
 import Foundation
-import RSSReaderKit
+import FeedletKit
 
 /// UC-006 steps 3 to 7: what happens with the file the Reader selected to import. Shared by the Mac's
 /// Import OPML… command and the file importer on iPhone and iPad, which only differ in how they ask for the file

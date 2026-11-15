@@ -3,7 +3,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-xcodebuild -project RSSReader.xcodeproj -scheme RSSReader -configuration Release \
+xcodebuild -project Feedlet.xcodeproj -scheme Feedlet -configuration Release \
     -destination 'platform=macOS' -derivedDataPath build/dd -quiet build
 
 rm -rf "build/Feedlet.app"

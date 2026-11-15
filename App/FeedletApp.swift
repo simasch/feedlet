@@ -1,8 +1,8 @@
-import RSSReaderKit
+import FeedletKit
 import SwiftUI
 
 @main
-struct RSSReaderApp: App {
+struct FeedletApp: App {
     #if os(macOS)
     @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     #endif

@@ -12,9 +12,9 @@ column from the integration layer up, and `/use-case-coverage` searches for the 
 | Layer       | Technology                                                       | Skill | Test skill | Location                                                              |
 |-------------|------------------------------------------------------------------|-------|------------|-----------------------------------------------------------------------|
 | Migration   | –                                                                | –     | –          | –                                                                     |
-| Persistence | JSON file via `Codable` (`library.json` in the app container)    | –     | –          | `RSSReaderKit/Sources/RSSReaderKit/FeedStore.swift` (load/save)       |
-| Client      | `URLSession` (HTTP, conditional GET, feed discovery)             | –     | –          | `RSSReaderKit/Sources/RSSReaderKit/FeedFetcher.swift`                 |
-| Service     | Swift 6, `@Observable` `FeedStore`, `XMLParser` (feeds, OPML)    | –     | –          | `RSSReaderKit/Sources/RSSReaderKit/`                                  |
+| Persistence | JSON file via `Codable` (`library.json` in the app container)    | –     | –          | `FeedletKit/Sources/FeedletKit/FeedStore.swift` (load/save)       |
+| Client      | `URLSession` (HTTP, conditional GET, feed discovery)             | –     | –          | `FeedletKit/Sources/FeedletKit/FeedFetcher.swift`                 |
+| Service     | Swift 6, `@Observable` `FeedStore`, `XMLParser` (feeds, OPML)    | –     | –          | `FeedletKit/Sources/FeedletKit/`                                  |
 | API         | –                                                                | –     | –          | –                                                                     |
 | UI          | SwiftUI (macOS 14+, iOS/iPadOS 17+); tests: Swift Testing + ViewInspector, in process | –     | –          | `App/Views/`; tests in `AppTests/`                                    |
 | E2E         | –                                                                | –     | –          | –                                                                     |
@@ -36,9 +36,9 @@ of their own for the layers below unless a run names them (`/use-case-test UC-00
 No layer skill covers Swift, so every layer is built and tested by `/use-case-implement` and `/use-case-test` from
 their own knowledge. The UI row is the integration layer by the team's decision: SwiftUI views are tested in
 process against the real `FeedStore` (with a temporary library file and a stubbed Feed Publisher), not with the
-backend mocked. The tests use Swift Testing, like the existing `RSSReaderKitTests`, and ViewInspector to drive the
+backend mocked. The tests use Swift Testing, like the existing `FeedletKitTests`, and ViewInspector to drive the
 views; a view whose `@State` a test must reach carries ViewInspector's two-line `Inspection` hook (`App/Inspection.swift`).
-They run in the `RSSReaderTests` target, which compiles the views it needs from `App/` instead of hosting the app, so
+They run in the `FeedletTests` target, which compiles the views it needs from `App/` instead of hosting the app, so
 no test touches the Reader's own library. The Feed Publisher is replaced by a `URLProtocol` stub.
 
 UI tests run on macOS and on an iOS simulator: each platform's layout of a view is tested on its own platform.
@@ -48,7 +48,7 @@ Behaviour that exists on one platform only (the Mac's clipboard prefill) is test
 
 | System         | Contract                                                                                   | Location                                              |
 |----------------|--------------------------------------------------------------------------------------------|-------------------------------------------------------|
-| Feed Publisher | Public feed formats: RSS 2.0, RSS 1.0 (RDF), Atom (RFC 4287); HTML `<link rel="alternate">` for discovery | `RSSReaderKit/Sources/RSSReaderKit/FeedFetcher.swift` |
+| Feed Publisher | Public feed formats: RSS 2.0, RSS 1.0 (RDF), Atom (RFC 4287); HTML `<link rel="alternate">` for discovery | `FeedletKit/Sources/FeedletKit/FeedFetcher.swift` |
 
 The systems our system calls, by the name the use cases write on their `**Secondary Actors:**` line: the Client
 layer builds an adapter for each one from its contract (OpenAPI or AsyncAPI; `–` while there is none). A secondary
@@ -56,22 +56,22 @@ actor without a row is a person or a role. Without a Client layer the section is
 
 ## Module layout
 
-- `RSSReaderKit/` — local Swift package (product `RSSReaderKit`, module `RSSReaderKit`) with the platform-independent
-  core: models, persistence, client, service. Tests in `RSSReaderKit/Tests/RSSReaderKitTests/` (Swift Testing).
-- `App/` — the multiplatform app target of `RSSReader.xcodeproj` (macOS, iOS, iPadOS): SwiftUI views in
+- `FeedletKit/` — local Swift package (product `FeedletKit`, module `FeedletKit`) with the platform-independent
+  core: models, persistence, client, service. Tests in `FeedletKit/Tests/FeedletKitTests/` (Swift Testing).
+- `App/` — the multiplatform app target of `Feedlet.xcodeproj` (macOS, iOS, iPadOS): SwiftUI views in
   `App/Views/`, platform differences with `#if os(...)`.
-- `AppTests/` — the `RSSReaderTests` unit test target of `RSSReader.xcodeproj`: the UI tests, one suite per use case
+- `AppTests/` — the `FeedletTests` unit test target of `Feedlet.xcodeproj`: the UI tests, one suite per use case
   (`UC<nnn><Name>Test.swift`), and the Feed Publisher stub. Not hosted by the app; it compiles the views it tests
-  from `App/` (membership exceptions on the `App` folder) and links `RSSReaderKit` and ViewInspector.
+  from `App/` (membership exceptions on the `App` folder) and links `FeedletKit` and ViewInspector.
 - Dependencies: none in the app; ViewInspector (Swift package, 0.10.x) in the test target only.
 
 ## Commands
 
 | Purpose            | Command                                                                                      |
 |--------------------|----------------------------------------------------------------------------------------------|
-| Build              | `Scripts/build-app.sh` (macOS); `xcodebuild -project RSSReader.xcodeproj -scheme RSSReader -destination 'generic/platform=iOS Simulator' build` (iOS) |
-| Unit tests         | `cd RSSReaderKit && swift test`                                                              |
-| Integration tests  | `xcodebuild test -project RSSReader.xcodeproj -scheme RSSReader -destination 'platform=macOS,arch=arm64'` (macOS); `xcodebuild test -project RSSReader.xcodeproj -scheme RSSReader -destination 'platform=iOS Simulator,name=iPhone 17,OS=27.2' -only-testing:RSSReaderTests` (iOS) |
+| Build              | `Scripts/build-app.sh` (macOS); `xcodebuild -project Feedlet.xcodeproj -scheme Feedlet -destination 'generic/platform=iOS Simulator' build` (iOS) |
+| Unit tests         | `cd FeedletKit && swift test`                                                              |
+| Integration tests  | `xcodebuild test -project Feedlet.xcodeproj -scheme Feedlet -destination 'platform=macOS,arch=arm64'` (macOS); `xcodebuild test -project Feedlet.xcodeproj -scheme Feedlet -destination 'platform=iOS Simulator,name=iPhone 17,OS=27.2' -only-testing:FeedletTests` (iOS) |
 | End-to-end tests   | –                                                                                            |
 
 ## Markers

@@ -21,9 +21,9 @@ mkdir -p "$OUT"
 sed "s#<string>export</string>#<string>$DESTINATION</string>#" Scripts/ExportOptions.plist > "$OUT/ExportOptions.plist"
 
 for PLATFORM in iOS macOS; do
-    ARCHIVE="$OUT/RSSReader-$PLATFORM.xcarchive"
+    ARCHIVE="$OUT/Feedlet-$PLATFORM.xcarchive"
     echo "==> Archiving $PLATFORM (build $BUILD_NUMBER)"
-    xcodebuild -project RSSReader.xcodeproj -scheme RSSReader -configuration Release \
+    xcodebuild -project Feedlet.xcodeproj -scheme Feedlet -configuration Release \
         -destination "generic/platform=$PLATFORM" -archivePath "$ARCHIVE" \
         -allowProvisioningUpdates -quiet \
         DEVELOPMENT_TEAM="$DEVELOPMENT_TEAM" CURRENT_PROJECT_VERSION="$BUILD_NUMBER" \

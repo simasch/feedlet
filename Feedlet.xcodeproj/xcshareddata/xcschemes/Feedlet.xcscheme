@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A50000000000000000000001"
                BuildableName = "Feedlet.app"
-               BlueprintName = "RSSReader"
-               ReferencedContainer = "container:RSSReader.xcodeproj">
+               BlueprintName = "Feedlet"
+               ReferencedContainer = "container:Feedlet.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "RSSReaderKitTests"
-               BuildableName = "RSSReaderKitTests"
-               BlueprintName = "RSSReaderKitTests"
-               ReferencedContainer = "container:RSSReaderKit">
+               BlueprintIdentifier = "FeedletKitTests"
+               BuildableName = "FeedletKitTests"
+               BlueprintName = "FeedletKitTests"
+               ReferencedContainer = "container:FeedletKit">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C50000000000000000000001"
-               BuildableName = "RSSReaderTests.xctest"
-               BlueprintName = "RSSReaderTests"
-               ReferencedContainer = "container:RSSReader.xcodeproj">
+               BuildableName = "FeedletTests.xctest"
+               BlueprintName = "FeedletTests"
+               ReferencedContainer = "container:Feedlet.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -66,8 +66,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A50000000000000000000001"
             BuildableName = "Feedlet.app"
-            BlueprintName = "RSSReader"
-            ReferencedContainer = "container:RSSReader.xcodeproj">
+            BlueprintName = "Feedlet"
+            ReferencedContainer = "container:Feedlet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -83,8 +83,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A50000000000000000000001"
             BuildableName = "Feedlet.app"
-            BlueprintName = "RSSReader"
-            ReferencedContainer = "container:RSSReader.xcodeproj">
+            BlueprintName = "Feedlet"
+            ReferencedContainer = "container:Feedlet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
