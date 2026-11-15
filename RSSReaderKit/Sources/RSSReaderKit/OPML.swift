@@ -39,7 +39,7 @@ public enum OPML {
         return """
         <?xml version="1.0" encoding="UTF-8"?>
         <opml version="2.0">
-          <head><title>RSS Reader Subscriptions</title></head>
+          <head><title>Feedlet Subscriptions</title></head>
           <body>
         \(outlines)
           </body>

@@ -10,7 +10,7 @@ struct RSSReaderApp: App {
 
     var body: some Scene {
         #if os(macOS)
-        Window("RSS Reader", id: "main") {
+        Window("Feedlet", id: "main") {
             ContentView()
                 .environment(store)
                 .frame(minWidth: 900, minHeight: 500)

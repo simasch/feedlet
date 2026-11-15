@@ -1,7 +1,7 @@
 // swift-tools-version: 6.0
 import PackageDescription
 
-/// Platform-independent core of RSS Reader: models, feed parsing and fetching, persistence, OPML.
+/// Platform-independent core of Feedlet: models, feed parsing and fetching, persistence, OPML.
 /// The app UI lives in ../App and is built by ../RSSReader.xcodeproj.
 let package = Package(
     name: "RSSReaderKit",

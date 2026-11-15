@@ -13,7 +13,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A10000000000000000000001 /* RSS Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RSS Reader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A10000000000000000000001 /* Feedlet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Feedlet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A10000000000000000000002 /* RSSReaderKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RSSReaderKit; sourceTree = "<group>"; };
 		C10000000000000000000001 /* RSSReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSSReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -99,7 +99,7 @@
 		A40000000000000000000002 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A10000000000000000000001 /* RSS Reader.app */,
+				A10000000000000000000001 /* Feedlet.app */,
 				C10000000000000000000001 /* RSSReaderTests.xctest */,
 			);
 			name = Products;
@@ -128,7 +128,7 @@
 				B00000000000000000000002 /* RSSReaderKit */,
 			);
 			productName = RSSReader;
-			productReference = A10000000000000000000001 /* RSS Reader.app */;
+			productReference = A10000000000000000000001 /* Feedlet.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C50000000000000000000001 /* RSSReaderTests */ = {
@@ -286,7 +286,8 @@
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = App/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "RSS Reader";
+				INFOPLIST_KEY_CFBundleDisplayName = Feedlet;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.news";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -306,10 +307,10 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = local.rssreader;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.martinelli.rssreader;
 				PRODUCT_MODULE_NAME = RSSReader;
-				PRODUCT_NAME = "RSS Reader";
+				PRODUCT_NAME = Feedlet;
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
@@ -335,7 +336,8 @@
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = App/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "RSS Reader";
+				INFOPLIST_KEY_CFBundleDisplayName = Feedlet;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.news";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -355,10 +357,10 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = local.rssreader;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.martinelli.rssreader;
 				PRODUCT_MODULE_NAME = RSSReader;
-				PRODUCT_NAME = "RSS Reader";
+				PRODUCT_NAME = Feedlet;
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
@@ -377,9 +379,9 @@
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 1.0;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				PRODUCT_BUNDLE_IDENTIFIER = local.rssreader.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.martinelli.rssreader.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -398,9 +400,9 @@
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 1.0;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				PRODUCT_BUNDLE_IDENTIFIER = local.rssreader.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.martinelli.rssreader.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";

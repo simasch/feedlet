@@ -36,7 +36,7 @@ struct SidebarView: View {
         }
         .listStyle(.sidebar)
         #if os(iOS)
-        .navigationTitle("RSS Reader")
+        .navigationTitle("Feedlet")
         #endif
         .toolbar {
             ToolbarItem {

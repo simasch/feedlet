@@ -32,7 +32,7 @@ actor "Reader" as reader <<primary>>
 actor "Scheduler" as scheduler <<primary>>
 actor "Feed Publisher" as publisher <<secondary>>
 
-rectangle "RSS Reader" {
+rectangle "Feedlet" {
     usecase "UC-001\nSubscribe to Feed" as UC001 <<Done>>
     usecase "UC-002\nUnsubscribe from Feed" as UC002 <<Done>>
     usecase "UC-003\nRefresh Feeds" as UC003 <<Done>>

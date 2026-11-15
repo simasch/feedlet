@@ -1,4 +1,4 @@
-# RSS Reader
+# Feedlet
 
 A small native RSS/Atom reader for macOS, iPhone and iPad, written in Swift and SwiftUI. No third-party dependencies.
 
@@ -15,7 +15,7 @@ A small native RSS/Atom reader for macOS, iPhone and iPad, written in Swift and 
 - iOS: pull to refresh, swipe right to toggle read, swipe left to star, long-press for more, share sheet
 - Library stored as JSON in the app's sandbox container, under
   `Library/Application Support/RSSReader/library.json`
-  (on macOS: `~/Library/Containers/local.rssreader/Data/Library/Application Support/RSSReader/`)
+  (on macOS: `~/Library/Containers/ch.martinelli.rssreader/Data/Library/Application Support/RSSReader/`)
 
 ## Build and run
 
@@ -27,8 +27,9 @@ Open `RSSReader.xcodeproj`, pick *My Mac*, a simulator or a device as the destin
 From the terminal:
 
 ```sh
-Scripts/build-app.sh                       # build "build/RSS Reader.app" (macOS, Release)
-open "build/RSS Reader.app"
+Scripts/build-app.sh                       # build "build/Feedlet.app" (macOS, Release)
+DEVELOPMENT_TEAM=<team id> Scripts/release.sh [--upload]   # App Store archives, see docs/app-store-release.md
+open "build/Feedlet.app"
 
 xcodebuild -project RSSReader.xcodeproj -scheme RSSReader \
   -destination 'generic/platform=iOS Simulator' build    # iOS build
@@ -37,15 +38,15 @@ cd RSSReaderKit && swift test              # core tests, no Xcode project needed
 ```
 
 To run on a physical iPhone or to distribute, choose your team under *Signing & Capabilities* and
-change the bundle identifier (`local.rssreader`) to one you own. Without a team, the Mac app is
+change the bundle identifier (`ch.martinelli.rssreader`) to one you own if you build your own copy. Without a team, the Mac app is
 signed to run locally.
 
 The Mac app is sandboxed (outgoing network connections and user-selected files only). On its first
 launch, `App/container-migration.plist` moves a library left by earlier, unsandboxed builds from
 `~/Library/Application Support/RSSReader` into the container.
 
-The app icons in `App/Assets.xcassets` (rounded macOS sizes and a full-bleed iOS icon) are drawn by
-`Scripts/make-icon.swift`; run `swift Scripts/make-icon.swift` to regenerate them after editing.
+The app icons in `App/Assets.xcassets` (rounded macOS sizes and a full-bleed iOS icon) are generated
+from the square artwork in `Design/AppIcon.png`; run `swift Scripts/make-icon.swift` after replacing it.
 
 ## Keyboard shortcuts
 
@@ -81,7 +82,9 @@ RSSReaderKit/              Local Swift package with the platform-independent cor
   Tests/RSSReaderKitTests/
 Scripts/
   build-app.sh             Release build of the Mac app
-  make-icon.swift          Draws the app icons
+  make-icon.swift          Generates the app icons from Design/AppIcon.png
+  release.sh               App Store archives and upload (iOS + macOS)
+  ExportOptions.plist      Export settings for release.sh
 ```
 
 ## Ideas for next steps
